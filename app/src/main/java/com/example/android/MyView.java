@@ -12,11 +12,14 @@ public class MyView extends View {
 
     Paint paint = new Paint();
     float x = 50;
+    long lastTime = System.currentTimeMillis();
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawCircle(x, 500, 30, paint);
-        x += 1.5f;
+        long nowTime = System.currentTimeMillis();
+        x += 0.1f * (nowTime - lastTime);
+        lastTime = nowTime;
         invalidate();
     }
 
