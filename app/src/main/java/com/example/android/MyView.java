@@ -15,11 +15,10 @@ public class MyView extends View {
         Paint paint = new Paint();
         paint.setStrokeWidth(10);
 
-        int y = 0;
-        while(y < getHeight()){
-            canvas.drawLine(0, y, this.getWidth(), y, paint);
-            y += 35;
-        }
+        paint.setColor(Color.RED);
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        int y = 30;
+        canvas.drawLine(0, y, this.getWidth(), y + 40, paint);
     }
 
 }
