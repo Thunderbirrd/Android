@@ -15,10 +15,13 @@ public class MyView extends View {
         Paint paint = new Paint();
         paint.setStrokeWidth(10);
 
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.FILL_AND_STROKE);
-        int y = 30;
-        canvas.drawLine(0, y, this.getWidth(), y + 40, paint);
+        paint.setColor(Color.GREEN);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawCircle(350, 350, 300, paint);
+        paint.setColor(Color.BLUE);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(25);
+        canvas.drawCircle(350, 350, 300, paint);
     }
 
 }
