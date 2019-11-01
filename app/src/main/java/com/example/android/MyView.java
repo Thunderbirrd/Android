@@ -55,7 +55,7 @@ public class MyView extends View {
             y += 45;
         }
          */
-
+        //1.7.7
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         canvas.drawLine(100, 10, 100, 800, paint);
@@ -66,6 +66,10 @@ public class MyView extends View {
         paint.setColor(Color.BLUE);
         paint.setStrokeWidth(20);
         canvas.drawLine(500, 10, 500, 800, paint);
+        paint.setColor(Color.CYAN);
+        canvas.drawRect(800, 800, getHeight(), getHeight(), paint);
+        paint.setColor(Color.YELLOW);
+        canvas.drawCircle(600, 200, 150, paint);
     }
 
 }
