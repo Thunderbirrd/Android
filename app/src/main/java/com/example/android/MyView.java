@@ -80,6 +80,10 @@ public class MyView extends View {
             paint.setColor(Color.BLACK);
             canvas.drawText("P " + i + " (" + x[i] + ", " + y[i] + ")", x[i] + 10, y[i] - 15, paint);
         }
+        /* draw lines connected with balls
+        for (int i = 0; i < N - 1; i++) {
+            canvas.drawLine(x[i], y[i], x[i + 1], y[i + 1], paint);
+        } */
     }
     void nextFrame(){
         moveBalls();
