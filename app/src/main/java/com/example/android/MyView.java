@@ -9,6 +9,7 @@ import android.view.View;
 
 @SuppressLint("DrawAllocation")
 public class MyView extends View {
+    Paint paint = new Paint();
     int N = 8;
     int[] x = new int[N];
     int[] y = new int[N];
@@ -22,9 +23,13 @@ public class MyView extends View {
     int z = -1;
     double a = 0, ha = Math.PI / 180;
 
+    float rand(float min , float max){
+        return (float)(Math.random() * (max - min + 1)) + min;
+    }
+
     void fillArrayRandom(int[] a, int min, int max) {
         for (int i = 0; i < a.length; i++) {
-            a[i] = (int) (Math.random() * (max - min + 1)) + min;
+            a[i] = (int) rand(min, max);
         }
     }
 
@@ -49,13 +54,21 @@ public class MyView extends View {
                 x[i] = this.getWidth() / 2 + (int) (L[i] * vx[i] * Math.cos(a));
                 y[i] = this.getHeight() / 2 + (int) (L[i] * vy[i] * Math.sin(a));
             }
-            if (x[i] < 0 || x[i] > this.getWidth()){
-                vx[i] = -vx[i];
+            if (x[i] < 0 || x[i] > this.getWidth()) {
+                vx[i] *= -1;
+                if(x[i] < 0){
+                    x[i] = 0;
+                }else{
+                    x[i] = this.getWidth();
+                }
             }
-            if (y[i] < 0 || y[i] > this.getHeight()){
-
-                vy[i] = -vy[i];
-
+            if (y[i] < 0 || y[i] > this.getHeight()) {
+                vy[i] *= -1;
+                if(y[i] < 0){
+                    y[i] = 0;
+                }else{
+                    y[i] = this.getWidth();
+                }
             }
         }
         a += ha;
@@ -67,12 +80,7 @@ public class MyView extends View {
         timer.start();
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        Paint paint = new Paint();
-        paint.setColor(Color.RED);
-        canvas.drawCircle(this.getWidth() / 2, this.getHeight() / 2, 50, paint);
-        paint.setStyle(Paint.Style.FILL);
+    void drawBallsLines(Canvas canvas){
         for (int i = 0; i < N; i++) {
             paint.setColor(Color.argb(200, Red[i], Green[i], Blue[i]));
             canvas.drawCircle(x[i], y[i], R[i], paint);
@@ -80,10 +88,18 @@ public class MyView extends View {
             paint.setColor(Color.BLACK);
             canvas.drawText("P " + i + " (" + x[i] + ", " + y[i] + ")", x[i] + 10, y[i] - 15, paint);
         }
-        /* draw lines connected with balls
+
         for (int i = 0; i < N - 1; i++) {
             canvas.drawLine(x[i], y[i], x[i + 1], y[i + 1], paint);
-        } */
+        }
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        paint.setColor(Color.RED);
+        canvas.drawCircle(this.getWidth() / 2, this.getHeight() / 2, 50, paint);
+        paint.setStyle(Paint.Style.FILL);
+        drawBallsLines(canvas);
     }
     void nextFrame(){
         moveBalls();
