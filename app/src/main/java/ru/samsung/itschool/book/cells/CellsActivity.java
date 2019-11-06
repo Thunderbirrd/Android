@@ -3,6 +3,7 @@ package ru.samsung.itschool.book.cells;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -18,6 +19,9 @@ public class CellsActivity extends Activity implements OnClickListener,
 
     int WIDTH = 4;
     int HEIGHT =10;
+    int total = WIDTH * HEIGHT;
+    int count1 = 0;
+    int count2 = 0;
 
     Button[][] cells;
 
@@ -26,9 +30,7 @@ public class CellsActivity extends Activity implements OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cells);
         makeCells();
-
         generate();
-
     }
 
     void generate() {
@@ -39,6 +41,10 @@ public class CellsActivity extends Activity implements OnClickListener,
                 num++;
                 if (Math.random() >= 0.5) {
                     cells[i][j].setBackgroundColor(Color.CYAN);
+                    count1++;
+                }else{
+                    cells[i][j].setBackgroundColor(Color.YELLOW);
+                    count2++;
                 }
             }
     }
@@ -54,19 +60,26 @@ public class CellsActivity extends Activity implements OnClickListener,
 
         int tappedX = getX(tappedCell);
         int tappedY = getY(tappedCell);
-        for (int x = 0; x < WIDTH; x++) {
-            cells[tappedY][x].setBackgroundColor(Color.RED);
+        int color = ((ColorDrawable)cells[tappedY][tappedX].getBackground()).getColor();
+        if(color == Color.CYAN) {
+            cells[tappedY][tappedX].setBackgroundColor(Color.YELLOW);
+            count2++;
+        }else{
+            cells[tappedY][tappedX].setBackgroundColor(Color.CYAN);
+            count1++;
         }
-        for (int y = 0; y < HEIGHT; y++) {
-            cells[y][tappedX].setBackgroundColor(Color.RED);
+        if(color == Color.CYAN) {
+            cells[tappedY][tappedX].setBackgroundColor(Color.YELLOW);
+            count2++;
+        }else{
+            cells[tappedY][tappedX].setBackgroundColor(Color.CYAN);
+            count1++;
         }
-
+        if(count1 == total || count2 == total){
+            // Пытаюсь сделать рестарт, но не получается
+            onCreate(Bundle.EMPTY);
+        }
     }
-
-	/*
-     * NOT FOR THE BEGINNERS
-	 * ==================================================
-	 */
 
     int getX(View v) {
         return Integer.parseInt(((String) v.getTag()).split(",")[1]);
