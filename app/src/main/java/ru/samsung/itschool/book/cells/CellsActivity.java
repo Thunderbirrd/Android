@@ -64,20 +64,16 @@ public class CellsActivity extends Activity implements OnClickListener,
         if(color == Color.CYAN) {
             cells[tappedY][tappedX].setBackgroundColor(Color.YELLOW);
             count2++;
+            count1--;
         }else{
             cells[tappedY][tappedX].setBackgroundColor(Color.CYAN);
             count1++;
+            count2--;
         }
-        if(color == Color.CYAN) {
-            cells[tappedY][tappedX].setBackgroundColor(Color.YELLOW);
-            count2++;
-        }else{
-            cells[tappedY][tappedX].setBackgroundColor(Color.CYAN);
-            count1++;
-        }
+        System.out.println(count1);
         if(count1 == total || count2 == total){
-            // Пытаюсь сделать рестарт, но не получается
-            onCreate(Bundle.EMPTY);
+            makeCells();
+            generate();
         }
     }
 
