@@ -39,15 +39,17 @@ public class CellsActivity extends Activity implements OnClickListener,
     }
 
     void generate() {
-        for (int i = 0; i < HEIGHT; i++)
+        for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
                 isBomb[i][j] = 0;
                 isDrawn[i][j] = 0;
+                flags[i][j] = 0;
                 cells[i][j].setBackgroundColor(Color.BLACK);
-                if(Math.random() <= 0.2){
+                if (Math.random() <= 0.2) {
                     isBomb[i][j] = 1;
                 }
             }
+        }
     }
 
     @Override
@@ -60,14 +62,14 @@ public class CellsActivity extends Activity implements OnClickListener,
         cells[tappedY][tappedX].setBackgroundColor(Color.YELLOW);
         flags[tappedY][tappedX] = 1;
 
-        if(Arrays.equals(flags, isBomb)){
-            Task.showMessage(this, "Вы победили! Поздравляем!");
-            makeCells();
+        Object[][] arr1 = {flags};
+        Object[][] arr2 = {isBomb};
+        if(Arrays.deepEquals(arr1, arr2)){
+            Task.showMessage(this, "Вы победили!");
             generate();
         }
 
-
-        return true;
+        return false;
     }
 
     private void area(int i, int j){
