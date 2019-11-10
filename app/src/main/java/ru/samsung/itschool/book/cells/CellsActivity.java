@@ -68,8 +68,7 @@ public class CellsActivity extends Activity implements OnClickListener,
             Task.showMessage(this, "Вы победили!");
             generate();
         }
-
-        return false;
+        return true;
     }
 
     private void area(int i, int j){
