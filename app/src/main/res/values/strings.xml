@@ -1,7 +1,39 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="title">Авторизация</string>
+    <string name="title2">Регистрация</string>
     <string name="log">Логин</string>
     <string name="pass">Пароль</string>
     <string name="enter">Вход</string>
+    <string name="reg">Зарегистрироваться</string>
+    <string name="Check">Проверить оценки</string>
+    <string name="Schedule">Расписание уроков</string>
+
+    <string name="Physics">Физика</string>
+
+    <string name="Russian">Русский</string>
+
+    <string name="English">Английский язык</string>
+
+    <string name="ComputerScience">Информатика</string>
+
+    <string name="Math">Алгебра</string>
+
+    <string name="Biology">Биология</string>
+
+    <string name="Geography">Георграфия</string>
+
+    <string name="Empty">Заметки</string>
+
+    <string name="Monday">Понедельник</string>
+
+    <string name="Tuesday">Вторник</string>
+
+    <string name="Wednesday">Среда</string>
+
+    <string name="Thursday">Четверг</string>
+
+    <string name="Friday">Пятница</string>
+
+    <string name="Saturday">Суббота</string>
 </resources>
