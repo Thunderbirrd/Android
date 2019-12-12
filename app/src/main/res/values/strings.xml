@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="title">Авторизация</string>
-    <string name="log">Логин</string>
-    <string name="pass">Пароль</string>
-    <string name="enter">Вход</string>
+    <string name="status"> Ваше число</string>
+    <string name="title">Заголовок ситуации</string>
+    <string name="description">Описание ситуации</string>
+    <string name="start">Старт</string>
+    <string name="stop">Стоп</string>
 </resources>
