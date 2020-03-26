@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="status"> Ваше число</string>
-    <string name="title">Заголовок ситуации</string>
-    <string name="description">Описание ситуации</string>
-    <string name="start">Старт</string>
-    <string name="stop">Стоп</string>
+    <string name="first">Первое число</string>
+    <string name="second">Второе число</string>
+    <string name="sum">Сложить</string>
+    <string name="diff">Вычитание</string>
+    <string name="mult">Умножение</string>
+    <string name="div">Деление</string>
+    <string name="res">Результат</string>
 </resources>
