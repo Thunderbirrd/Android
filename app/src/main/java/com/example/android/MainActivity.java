@@ -1,5 +1,6 @@
 package com.example.android;
 
+<<<<<<< HEAD
 import androidx.appcompat.app.AppCompatActivity;
 
 <<<<<<< HEAD
@@ -7,19 +8,16 @@ import android.content.Intent;
 =======
 import android.os.AsyncTask;
 >>>>>>> develop
+=======
+>>>>>>> develop
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ListView;
 
-import java.sql.Time;
-import java.util.Timer;
-import java.util.concurrent.TimeUnit;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     String PASSWORD = "123";
@@ -33,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
     Button start, stop;
     NumberTick tick;
 >>>>>>> develop
+=======
+>>>>>>> develop
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 <<<<<<< HEAD
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(i);
 =======
 
+<<<<<<< HEAD
         txt1 = (TextView) findViewById(R.id.status);
         txt2 = (TextView) findViewById(R.id.number);
         start = (Button) findViewById(R.id.start);
@@ -110,35 +111,88 @@ public class MainActivity extends AppCompatActivity {
     private void cancelTask() {
         if (tick == null) return;
         tick.cancel(false);
+=======
+        MyCompanyAdapter adapter = new MyCompanyAdapter(this, makeCompanies());
+        ListView listView = findViewById(R.id.listView);
+        listView.setAdapter(adapter);
+>>>>>>> develop
     }
 
+    MyCompany[] makeCompanies(){
+        MyCompany[] arr = new MyCompany[16];
 
-    private class NumberTick extends AsyncTask<Void, Integer, Void>{
+        String[] names = {
+                "Coca cola",
+                "Google",
+                "Apple",
+                "Facebook",
+                "Tesla",
+                "Microsoft",
+                "Сбербанк",
+                "Аэрофлот",
+                "Oracle",
+                "Blizzard",
+                "Газпром",
+                "Яндекс",
+                "Samsung",
+                "IBM",
+                "Ubisoft",
+                "Electronic Arts"
+        };
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            for (int i = 1; i <= 100; i++){
-                try {
-                    if(isCancelled()) return null;
-                    TimeUnit.MILLISECONDS.sleep(500);
-                    publishProgress(i);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        int[] pictures = {
+                R.drawable.cola,
+                R.drawable.google,
+                R.drawable.apple,
+                R.drawable.facebook,
+                R.drawable.tesla,
+                R.drawable.microsoft,
+                R.drawable.sberbank,
+                R.drawable.aeroflot,
+                R.drawable.oracle,
+                R.drawable.blizzard,
+                R.drawable.gazprom,
+                R.drawable.yandex,
+                R.drawable.samsung,
+                R.drawable.ibm,
+                R.drawable.ubisoft,
+                R.drawable.electronic_arts,
+        };
 
-            }
-            return null;
+        double[] costs = {
+                1012.29,
+                1214.77,
+                1277.17,
+                658.38,
+                653.54,
+                492.12,
+                2.71,
+                10.43,
+                97.06,
+                170.28,
+                1.05,
+                33.94,
+                107.95,
+                47.93,
+                59.04,
+                116.76,
+        };
+
+        for (int i = 0; i < arr.length; i++){
+            arr[i] = new MyCompany();
+            arr[i].name = names[i];
+            arr[i].picture = pictures[i];
+            arr[i].cost = costs[i];
         }
 
-        @Override
-        protected void onProgressUpdate(Integer... values){
-            super.onProgressUpdate(values);
-            txt2.setText("" + values[0]);
-        }
-
+<<<<<<< HEAD
         @Override protected void onCancelled() {
             super.onCancelled();
         }
 >>>>>>> develop
+=======
+        return arr;
+>>>>>>> develop
     }
 }
+
